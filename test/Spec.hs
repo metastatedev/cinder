@@ -1,5 +1,7 @@
 module Main where
 
+import Protolude
+
 main ∷ IO ()
 main = do
-  putStrLn "no tests yet written"
+  putText "no tests yet written"

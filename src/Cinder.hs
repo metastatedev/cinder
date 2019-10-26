@@ -1,5 +1,13 @@
-module Cinder where
+module Cinder
+  ( module Cinder.Types,
+  )
+where
 
-main ∷ IO ()
-main = do
-  putStrLn "hello world"
+import Cinder.Types
+import qualified Data.JSON.Schema.Generator as G
+
+instance G.JSONSchemaGen Port
+
+instance G.JSONSchemaGen Node
+
+instance G.JSONSchemaGen Net

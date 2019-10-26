@@ -4,3 +4,4 @@
 # Haskell temporary
 .ghci
 .stack-work/
+cinder.cabal

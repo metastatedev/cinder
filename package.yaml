@@ -1,0 +1,42 @@
+name:                cinder
+version:             0.1.0.0
+synopsis:            Common Interaction Net Delightfully Extensible Representation
+homepage:            https://github.com/cryptiumlabs/cinder#readme
+license:             GPL-3
+author:              Cryptium Labs
+maintainer:          cwgoes@cryptium.ch
+copyright:           2019 Cryptium Labs
+category:            Web
+extra-source-files:
+- README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+  - jsonschema-gen
+
+ghc-options:
+  - -ferror-spans
+  - -Wall
+  - -fno-warn-orphans
+  - -fno-warn-name-shadowing
+  - -j6
+  - -static
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - Cinder
+
+executables:
+  cinder:
+    source-dirs:      app
+    main:             Main.hs
+    dependencies:
+      - cinder
+
+tests:
+  cinder-test:
+    main:         Spec.hs
+    source-dirs:  test
+    dependencies:
+      - cinder

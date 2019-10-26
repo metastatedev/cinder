@@ -36,6 +36,9 @@ library:
   source-dirs: src
   exposed-modules:
     - Cinder
+  other-modules:
+    - Cinder.Types
+    - Cinder.Instances
 
 executables:
   cinder:

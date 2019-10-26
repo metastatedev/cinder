@@ -15,5 +15,5 @@ main = do
     Schema → do
       BL.putStrLn (G.generate (Proxy ∷ Proxy Port))
       BL.putStrLn (G.generate (Proxy ∷ Proxy Node))
-      BL.putStrLn (G.generate (Proxy ∷ Proxy Net))
+      BL.putStrLn (G.generate (Proxy ∷ Proxy (Net Kind)))
     Validate _ → putText "not yet implemented"

@@ -6,6 +6,9 @@ setup:
 build:
 	stack build --copy-bins --fast
 
+schema: build
+	stack exec -- cinder schema > schema.json
+
 format:
 	find . -path ./.stack-work -prune -o -type f -name "*.hs" -exec ormolu --mode inplace {} \;
 
@@ -18,4 +21,4 @@ repl:
 clean:
 	stack clean
 
-.PHONY: all setup build format test repl clean
+.PHONY: all setup build schema format test repl clean

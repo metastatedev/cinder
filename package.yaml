@@ -43,6 +43,9 @@ executables:
     main:             Main.hs
     dependencies:
       - cinder
+      - optparse-applicative
+      - ansi-wl-pprint
+      - gitrev
 
 tests:
   cinder-test:

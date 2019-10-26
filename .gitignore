@@ -1,0 +1,6 @@
+# vim swapfiles
+*.swp
+
+# Haskell temporary
+.ghci
+.stack-work/

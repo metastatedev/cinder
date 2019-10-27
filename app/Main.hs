@@ -19,6 +19,8 @@ main = do
           generate (Proxy ∷ Proxy FMNet.Kind),
           generate (Proxy ∷ Proxy FMNet.Node),
           generate (Proxy ∷ Proxy FMNet.BespokeFunction),
+          generate (Proxy ∷ Proxy FMNet.Data),
+          generate (Proxy ∷ Proxy FMNet.Op),
           generate (Proxy ∷ Proxy FMNet.Net)
         ]
     Validate _ → putText "not yet implemented"

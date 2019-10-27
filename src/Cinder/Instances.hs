@@ -1,15 +1,15 @@
 module Cinder.Instances where
 
 import Cinder.Types
-import qualified Data.JSON.Schema.Generator as G
+import Data.JSON.Schema.Generator
 import Protolude
 
-instance G.JSONSchemaGen Port
+instance JSONSchemaGen Port
 
-instance G.JSONSchemaGen Kind
+instance (Typeable dataTy, JSONSchemaGen dataTy) ⇒ JSONSchemaGen (Kind dataTy)
 
-instance G.JSONSchemaGen Node
+instance (Typeable dataTy, JSONSchemaGen dataTy) ⇒ JSONSchemaGen (Node dataTy)
 
-instance (Typeable a, G.JSONSchemaGen a) ⇒ G.JSONSchemaGen (BespokeFunction a)
+instance (Typeable opTy, JSONSchemaGen opTy) ⇒ JSONSchemaGen (BespokeFunction opTy)
 
-instance (Typeable a, G.JSONSchemaGen a) ⇒ G.JSONSchemaGen (Net a)
+instance (Typeable dataTy, JSONSchemaGen dataTy, Typeable opTy, JSONSchemaGen opTy) ⇒ JSONSchemaGen (Net dataTy opTy)

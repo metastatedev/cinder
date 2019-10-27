@@ -7,36 +7,52 @@ type Address = Integer
 type Slot = Integer
 
 data Port
-  = Port
+  = -- Port, referencing another node at a particular address & slot.
+    Port
       { portAddress ∷ Address,
         portSlot ∷ Slot
       }
   deriving (Show, Eq, Generic, Typeable)
 
-data Kind
-  = Eraser
-  | Constructor
-  | Duplicator
+data Kind dataTy
+  = -- Eraser node.
+    Eraser
+  | -- Constructor node, with integer label.
+    Constructor
+      { constructorLabel ∷ Integer
+      }
+  | -- Bespoke function node, possibly curried, with integer function reference.
+    Bespoke
+      { curriedFunction ∷ Integer,
+        curriedData ∷ [dataTy]
+      }
+  | -- Data node, with data value.
+    Data
+      { dataValue ∷ dataTy
+      }
   deriving (Show, Eq, Generic, Typeable)
 
-data Node
-  = Node
+data Node dataTy
+  = -- Node, with address, kind, and ports.
+    Node
       { nodeAddress ∷ Address,
-        nodeKind ∷ Kind,
+        nodeKind ∷ Kind dataTy,
         nodePorts ∷ [Port]
       }
   deriving (Show, Eq, Generic, Typeable)
 
 data BespokeFunction opType
-  = BespokeFunction
+  = -- Bespoke function, with a unique number and an operation.
+    BespokeFunction
       { functionNumber ∷ Integer,
         functionOp ∷ opType
       }
   deriving (Show, Eq, Generic, Typeable)
 
-data Net opType
-  = Net
-      { netNodes ∷ [Node],
+data Net dataTy opType
+  = -- Interaction net, with many nodes and definitions for all bespoke functions.
+    Net
+      { netNodes ∷ [Node dataTy],
         netBespokeFunctions ∷ [BespokeFunction opType]
       }
   deriving (Show, Eq, Generic, Typeable)

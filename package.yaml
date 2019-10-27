@@ -14,7 +14,7 @@ dependencies:
   - base >= 4.7 && < 5
   - protolude
   - bytestring
-  - jsonschema-gen
+  - aeson
 
 default-extensions:
   - NoImplicitPrelude
@@ -36,9 +36,12 @@ library:
   source-dirs: src
   exposed-modules:
     - Cinder
+    - Cinder.Nets.FMNet
   other-modules:
     - Cinder.Types
     - Cinder.Instances
+  dependencies:
+    - jsonschema-gen
 
 executables:
   cinder:
